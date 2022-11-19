@@ -1,0 +1,150 @@
+:root {
+    --light: #d8dbe0;
+    --dark: #151515;
+  }
+  
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: #151515;
+    display: flex;
+  }
+  
+  .toggle-switch {
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    margin-left: 100px;
+    margin-top: 100px;
+  }
+
+  .outter-switch {
+    position: absolute;
+    width: 150px;
+    height: 80px;
+    margin-left: -12px;
+    margin-top: -12px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.9);
+    border-radius: 50px;
+    background-color: var(--light);
+    transition: 0.3s
+  }
+
+  .portofolio-text {
+    color: var(--light);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 29px;
+    left: 35px;
+    font-size: 9px;
+    font-family: "Comfortaa", sans-serif;
+    transition: visibility 0s, opacity 1s linear;
+  }
+
+  .hello-text {
+    color: var(--dark);
+    position: absolute;
+    opacity: 0;
+    transform: translate(-50%,-50%);
+    top: 29px;
+    left: 87px;
+    font-size: 20px;
+    font-family: "Comfortaa", sans-serif;
+  }
+  
+  .switch-background {
+    position: absolute;
+    width: 125px;
+    height: 55px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .switch-input {
+    position: absolute;
+    display: none;
+  }
+  
+  .slider {
+    position: absolute;
+    width: 125px;
+    height: 55px;
+    border-radius: 50px;
+    background-color: #383838;
+    box-shadow: inset 0px 0px 10px rgba(0,0,0,0.9);
+    transition: 0.3s;
+  }
+  
+  .switch-input:checked ~ label .slider {
+    background-color: var(--light);
+  }
+
+  .switch-input:checked ~ label .outter-switch {
+    background-color: var(--dark);
+  }
+  
+  .switch-input:checked ~ label .hello-text {
+    opacity: 1;
+    transition: visibility 0s, opacity 1s linear;
+  }
+
+  .slider::before {
+    content: "";
+    position: absolute;
+    left: 71px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    box-shadow: inset 3px 0px 10px -2px rgba(255, 255, 255, 0.9);
+    background-color: black;
+    transition: 0.3s;
+  }
+
+  .switch-input:checked ~ label .slider::before {
+    transform: translateX(-70px);
+    background-color: var(--light);
+    box-shadow: inset -3px 0px 10px rgba(0,0,0,0.9);
+  }
+
+  .switch-input:checked ~ label .portofolio-text {
+    opacity: 0;
+    transition: 0s;
+  }
+
+  .hex-hello-world-text {
+    color: white;
+    font-family: "Comfortaa", sans-serif;
+    padding-top: 120px;
+    margin-left: -60px;
+    transition: visibility 0s, opacity 1s linear;
+    transition-delay: 0.7s;
+  }
+
+  .hello-world-text {
+    color: white;
+    font-family: "Comfortaa", sans-serif;
+    margin-top: -20px;
+    margin-left: -60px;
+    opacity: 0;
+    transition: visibility 0.8s linear, opacity 1s linear;
+  }
+
+  .switch-input:checked ~ .hex-hello-world-text {
+    opacity: 0;
+    transition: visibility 0.8s linear, opacity 1s linear;
+  }
+
+  .switch-input:checked ~ .hello-world-text {
+    opacity: 1;
+    transition: visibility 0s, opacity 1s linear;
+    transition-delay: 0.7s;
+  }
+
+  .switch-input:checked ~ .hex-hello-world-text {
+    visibility: hidden;
+  }
