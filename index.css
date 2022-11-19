@@ -115,29 +115,30 @@
     margin-top: 120px;
     margin-left: -60px;
     color: white;
-    transition: visibility 0s, opacity 1s linear;
-    transition-delay: 0.7s;
+    transform: translateX(0px);
+    transition: 0.3s;
+    transition-delay: 0.5s;
   }
 
   .hello-world-text {
     color: white;
     margin-top: 120px;
-    margin-left: -60px;
-    opacity: 0;
+    margin-left: -500px;
     visibility: hidden;
-    transition: visibility 0.8s, opacity 1s linear;
+    transform: translateX(-300px);
+    transition: 0.3s;
   }
 
   .switch-input:checked ~ .hex-hello-world-text {
-    opacity: 0;
-    transition: visibility 0.8s, opacity 1s linear;
+    transform: translateX(-300px);
+    transition: 0.3s;
   }
 
   .switch-input:checked ~ .hello-world-text {
     visibility: visible;
-    opacity: 1;
-    transition: visibility 0s, opacity 1s linear;
-    transition-delay: 0.7s;
+    transform: translateX(440px);
+    transition: 0.3s;
+    transition-delay: 0.5s;
   }
 
   .switch-input:checked ~ .hex-hello-world-text {
@@ -151,30 +152,30 @@
     color: white;
     font-size: 120px;
     visibility: hidden;
-    opacity: 0;
-    transition: visibility 1s, opacity 1s linear;
+    transform: translateX(-550px);
+    transition: 0.3s;
   }
 
   .switch-input:checked ~ .my-name-text {
     visibility: visible;
-    opacity: 1;
-    transition: visibility 0s, opacity 1s linear;
-    transition-delay: 0.8s;
+    transform: translateX(0px);
+    transition: 0.3s;
+    transition-delay: 0.5s;
   }
 
   .current-position {
     color: white;
     font-size: 30px;
-    margin-left: 270px;
-    margin-top: -75px;
+    margin-left: 720px;
+    margin-top: -550px;
     visibility: hidden;
-    opacity: 0;
-    transition: visibility 1s, opacity 1s linear;
+    transform: translateY(-550px);
+    transition: 0.3s;
   }
 
   .switch-input:checked ~ .current-position {
     visibility: visible;
-    opacity: 1;
-    transition: visibility 0s, opacity 1s linear;
-    transition-delay: 0.8s;
+    transform: translateY(475px);
+    transition: 0.3s;
+    transition-delay: 0.5s;
   }
