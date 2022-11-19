@@ -7,15 +7,20 @@
     background-color: #151515;
     display: flex;
     font-family: "Comfortaa", sans-serif;
+    scroll-behavior: smooth;
   }
   
   .toggle-switch {
     position: absolute;
     display: flex;
     width: 300px;
-    height: 200px;
+    height: 150px;
     margin-left: 100px;
     margin-top: 100px;
+  }
+
+  .toggle-switch:has(> .switch-input:checked) {
+    height: 2000px;
   }
 
   .outter-switch {
@@ -115,29 +120,29 @@
     margin-top: 120px;
     margin-left: -60px;
     color: white;
-    transform: translateX(0px);
-    transition: 0.3s;
+    opacity: 1;
+    transition: visibility 0s, opacity 1s linear;
     transition-delay: 0.5s;
   }
 
   .hello-world-text {
     color: white;
     margin-top: 120px;
-    margin-left: -500px;
+    margin-left: -60px;
     visibility: hidden;
-    transform: translateX(-300px);
-    transition: 0.3s;
+    opacity: 0;
+    transition: 1s;
   }
 
   .switch-input:checked ~ .hex-hello-world-text {
-    transform: translateX(-300px);
-    transition: 0.3s;
+    opacity: 0;
+    transition: 1s;
   }
 
   .switch-input:checked ~ .hello-world-text {
     visibility: visible;
-    transform: translateX(440px);
-    transition: 0.3s;
+    opacity: 1;
+    transition: 1s;
     transition-delay: 0.5s;
   }
 
@@ -164,9 +169,10 @@
   }
 
   .current-position {
+    position: absolute;
     color: white;
     font-size: 30px;
-    margin-left: 720px;
+    margin-left: 480px;
     margin-top: -550px;
     visibility: hidden;
     transform: translateY(-550px);
@@ -178,4 +184,49 @@
     transform: translateY(475px);
     transition: 0.3s;
     transition-delay: 0.5s;
+  }
+
+  .me-photo {
+    position: absolute;
+    margin-top: -1000px;
+    margin-left: 1250px;
+    visibility: hidden;
+    transform: translateY(0px);
+    transition: 0.3s;
+  }
+
+  .switch-input:checked ~ .me-photo {
+    visibility: visible;
+    transform: translateY(925px);
+    transition: 0.3s;
+    transition-delay: 0.5s;
+  }
+
+  .nav-bar {
+    position: sticky;
+    display: flex;
+    top: 0;
+    column-gap: 0px;
+    justify-content: space-between;
+    width: 1866px;
+    height: 150px;
+    margin-left: -2185px;
+    margin-top: 680px;
+    box-shadow: 0px 0px 30px rgba(0,0,0,0.9);
+    visibility: hidden;
+    background-color: var(--light);
+    transition: 0.3s
+  }
+
+  .switch-input:checked ~ .nav-bar {
+    visibility: visible;
+    transform: translateX(1890px);
+    transition: 0.3s;
+    transition-delay: 0.5s;
+  }
+
+  .nav-bar-element {
+    margin-top: 95px;
+    top: 50%;
+    transform: translateY(-50%);
   }
