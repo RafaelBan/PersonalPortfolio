@@ -4,6 +4,8 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript" src="index.js"></script>
     </head>
     <body>
         <div class="toggle-switch">
@@ -20,17 +22,22 @@
             <div class="current-position">S o f t w a r e<br><br>D e v e l o p e r</div>
             <img class="me-photo" src="img/rafa-photo-1.png" alt="Rafael-Valentin Ban" height="585">
             <div class="nav-bar">
-                <span class="nav-bar-element" style="margin-left: 100px;">
-                    <a href="#about me">a b o u t<br>m e</a>
-                </span>
-                <span class="nav-bar-element">s k i l l s</span>
-                <span class="nav-bar-element">w o r k<br>e x p e r i e n c e</span>
-                <span class="nav-bar-element">p e r s o n a l<br>p r o j e c t s</span>
-                <span class="nav-bar-element" style="margin-right: 100px;">c o n t a c t</span>
+                <a id="about-me-href" class="nav-bar-element" href="#about-me">a b o u t<br>m e</a>
+                <a id="skills-href" class="nav-bar-element" href="#skills">s k i l l s</a>
+                <a id="work-experience-href" class="nav-bar-element" href="#work-experience">w o r k<br>e x p e r i e n c e</a>
+                <a id="personal-projects-href" class="nav-bar-element" href="#personal-projects">p e r s o n a l<br>p r o j e c t s</a>
+                <a id="contact-href" class="nav-bar-element" href="#contact">c o n t a c t</a>
             </div>
         </div>
-        <section id="about me">
-            hello
+        <section id="about-me" class="about-me-section">
+            <div class="personal-description">
+                My name is Rafael-Valentin Ban but let's resume it to Rafa, hello friend! :)<br>
+                I am 21 years old, finished Computer Science at University of West from Timisoara and currently working as a Junior Software Engineer at Vitesco Technologies Engineering. At the moment I am working onto Simulink Modeling and Code Generation and from the next year will work as a Software Integrator and Build Manager on an electrification project. <br>
+                Beside work I am passionate of full-stack web development (databases, back-end, apis and front-end) where I am on a self-learning path creating personal projects. <br>
+                I am a lot into photography and motivational living.
+            </div>
+        </section>
+        <section id="skills" class="skills-section">
         </section>
     </body>
 </html>

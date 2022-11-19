@@ -1,15 +1,15 @@
 :root {
     --light: #d8dbe0;
     --dark: #151515;
-  }
-  
-  body {
-    background-color: #151515;
-    display: flex;
-    font-family: "Comfortaa", sans-serif;
     scroll-behavior: smooth;
   }
   
+  body {
+    background-color: var(--dark);
+    display: flex;
+    font-family: "Comfortaa", sans-serif;
+  }
+
   .toggle-switch {
     position: absolute;
     display: flex;
@@ -206,13 +206,12 @@
     position: sticky;
     display: flex;
     top: 0;
+    z-index: 1;
     column-gap: 0px;
-    justify-content: space-between;
     width: 1866px;
     height: 150px;
     margin-left: -2185px;
     margin-top: 680px;
-    box-shadow: 0px 0px 30px rgba(0,0,0,0.9);
     visibility: hidden;
     background-color: var(--light);
     transition: 0.3s
@@ -226,7 +225,41 @@
   }
 
   .nav-bar-element {
-    margin-top: 95px;
-    top: 50%;
-    transform: translateY(-50%);
+    color: var(--dark);
+    padding-top: 70px;
+    padding-right: 140.4px;
+    padding-left: 140px;
+    text-decoration: none;
+    box-shadow: inset 0px 7px 3px -3px rgba(0,0,0,0.9);
+  }
+
+  .about-me-section {
+    position: absolute;
+    color: white;
+    margin-top: 850px;
+    margin-left: -8px;
+    padding-bottom: 50px;
+    box-shadow: 0px 7px 3px -3px rgba(0,0,0,0.9);
+  }
+
+  .personal-description {
+    font-size: 25px;
+    margin-top: 200px;
+    margin-left: 50px;
+    margin-right: 50px;
+    display: none;
+  }
+
+  .toggle-switch:has(> .switch-input:checked) ~ .about-me-section > .personal-description {
+    display: flex;
+  }
+
+  .skills-section {
+    position: absolute;
+    color: white;
+    margin-top: 1152px;
+  }
+
+  .toggle-switch:has(> .switch-input:checked) ~ .skills-section > .personal-description {
+    display:flex;
   }
