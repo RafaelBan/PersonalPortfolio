@@ -11,6 +11,7 @@
   
   .toggle-switch {
     position: absolute;
+    display: flex;
     width: 300px;
     height: 200px;
     margin-left: 100px;
@@ -110,16 +111,17 @@
   }
 
   .hex-hello-world-text {
-    color: white;
-    padding-top: 120px;
+    position: absolute;
+    margin-top: 120px;
     margin-left: -60px;
+    color: white;
     transition: visibility 0s, opacity 1s linear;
     transition-delay: 0.7s;
   }
 
   .hello-world-text {
     color: white;
-    margin-top: -20px;
+    margin-top: 120px;
     margin-left: -60px;
     opacity: 0;
     visibility: hidden;
@@ -143,15 +145,34 @@
   }
 
   .my-name-text {
+    position: absolute;
+    margin-top: 140px;
+    margin-left: -66px;
     color: white;
     font-size: 120px;
     visibility: hidden;
     opacity: 0;
     transition: visibility 1s, opacity 1s linear;
-    margin-left: -70px;
   }
 
   .switch-input:checked ~ .my-name-text {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s, opacity 1s linear;
+    transition-delay: 0.8s;
+  }
+
+  .current-position {
+    color: white;
+    font-size: 30px;
+    margin-left: 270px;
+    margin-top: -75px;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 1s, opacity 1s linear;
+  }
+
+  .switch-input:checked ~ .current-position {
     visibility: visible;
     opacity: 1;
     transition: visibility 0s, opacity 1s linear;
