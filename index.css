@@ -3,15 +3,10 @@
     --dark: #151515;
   }
   
-  * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-  }
-  
   body {
     background-color: #151515;
     display: flex;
+    font-family: "Comfortaa", sans-serif;
   }
   
   .toggle-switch {
@@ -41,7 +36,6 @@
     top: 29px;
     left: 35px;
     font-size: 9px;
-    font-family: "Comfortaa", sans-serif;
     transition: visibility 0s, opacity 1s linear;
   }
 
@@ -53,7 +47,6 @@
     top: 29px;
     left: 87px;
     font-size: 20px;
-    font-family: "Comfortaa", sans-serif;
   }
   
   .switch-background {
@@ -118,7 +111,6 @@
 
   .hex-hello-world-text {
     color: white;
-    font-family: "Comfortaa", sans-serif;
     padding-top: 120px;
     margin-left: -60px;
     transition: visibility 0s, opacity 1s linear;
@@ -127,19 +119,20 @@
 
   .hello-world-text {
     color: white;
-    font-family: "Comfortaa", sans-serif;
     margin-top: -20px;
     margin-left: -60px;
     opacity: 0;
-    transition: visibility 0.8s linear, opacity 1s linear;
+    visibility: hidden;
+    transition: visibility 0.8s, opacity 1s linear;
   }
 
   .switch-input:checked ~ .hex-hello-world-text {
     opacity: 0;
-    transition: visibility 0.8s linear, opacity 1s linear;
+    transition: visibility 0.8s, opacity 1s linear;
   }
 
   .switch-input:checked ~ .hello-world-text {
+    visibility: visible;
     opacity: 1;
     transition: visibility 0s, opacity 1s linear;
     transition-delay: 0.7s;
@@ -147,4 +140,20 @@
 
   .switch-input:checked ~ .hex-hello-world-text {
     visibility: hidden;
+  }
+
+  .my-name-text {
+    color: white;
+    font-size: 120px;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 1s, opacity 1s linear;
+    margin-left: -70px;
+  }
+
+  .switch-input:checked ~ .my-name-text {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s, opacity 1s linear;
+    transition-delay: 0.8s;
   }
