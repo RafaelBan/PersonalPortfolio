@@ -6,16 +6,31 @@
   
   body {
     background-color: var(--dark);
-    display: flex;
     font-family: "Comfortaa", sans-serif;
+    overflow-x: hidden;
   }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--light);
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+/* 
+START SWITCH
+*/
 
   .toggle-switch {
     position: absolute;
-    display: flex;
-    width: 300px;
-    height: 150px;
-    margin-left: 100px;
+    z-index: 1;
+    margin-left: 160px;
     margin-top: 100px;
   }
 
@@ -115,10 +130,22 @@
     transition: 0s;
   }
 
+/* 
+END SWITCH
+*/
+/* 
+START HEX / NON HEX HELLO WORLD TEXT
+*/
+
+  .header-container {
+    position: relative;
+    display: flex;
+  }
+
   .hex-hello-world-text {
     position: absolute;
-    margin-top: 120px;
-    margin-left: -60px;
+    margin-top: 220px;
+    margin-left: 100px;
     color: white;
     opacity: 1;
     transition: visibility 0s, opacity 1s linear;
@@ -126,34 +153,41 @@
   }
 
   .hello-world-text {
+    position: absolute;
     color: white;
-    margin-top: 120px;
-    margin-left: -60px;
+    margin-top: 220px;
+    margin-left: 100px;
     visibility: hidden;
     opacity: 0;
     transition: 1s;
   }
 
-  .switch-input:checked ~ .hex-hello-world-text {
+  .toggle-switch:has(> .switch-input:checked) ~ .header-container > .hex-hello-world-text {
     opacity: 0;
     transition: 1s;
   }
 
-  .switch-input:checked ~ .hello-world-text {
+  .toggle-switch:has(> .switch-input:checked) ~ .header-container > .hex-hello-world-text {
+    visibility: hidden;
+  }
+
+  .toggle-switch:has(> .switch-input:checked) ~ .header-container > .hello-world-text {
     visibility: visible;
     opacity: 1;
     transition: 1s;
     transition-delay: 0.5s;
   }
 
-  .switch-input:checked ~ .hex-hello-world-text {
-    visibility: hidden;
-  }
-
+/* 
+END HEX / NON HEX HELLO WORLD TEXT
+*/
+/* 
+START MY NAME, POSITION AND PHOTO
+*/
   .my-name-text {
-    position: absolute;
-    margin-top: 140px;
-    margin-left: -66px;
+    width: 500px;
+    margin-top: 250px;
+    margin-left: 40px;
     color: white;
     font-size: 120px;
     visibility: hidden;
@@ -161,7 +195,7 @@
     transition: 0.3s;
   }
 
-  .switch-input:checked ~ .my-name-text {
+  .toggle-switch:has(> .switch-input:checked) ~ .header-container > .my-name-text {
     visibility: visible;
     transform: translateX(0px);
     transition: 0.3s;
@@ -169,17 +203,17 @@
   }
 
   .current-position {
-    position: absolute;
+    width: 30px;
     color: white;
     font-size: 30px;
-    margin-left: 480px;
-    margin-top: -550px;
+    margin-left: 30px;
+    margin-top: -420px;
     visibility: hidden;
     transform: translateY(-550px);
     transition: 0.3s;
   }
 
-  .switch-input:checked ~ .current-position {
+  .toggle-switch:has(> .switch-input:checked) ~ .header-container > .current-position {
     visibility: visible;
     transform: translateY(475px);
     transition: 0.3s;
@@ -187,37 +221,43 @@
   }
 
   .me-photo {
-    position: absolute;
-    margin-top: -1000px;
-    margin-left: 1250px;
+    margin-top: -900px;
+    margin-left: auto;
+    margin-right: 50px;
     visibility: hidden;
     transform: translateY(0px);
     transition: 0.3s;
   }
 
-  .switch-input:checked ~ .me-photo {
+  .toggle-switch:has(> .switch-input:checked) ~ .header-container > .me-photo {
     visibility: visible;
     transform: translateY(925px);
     transition: 0.3s;
     transition-delay: 0.5s;
   }
 
+/* 
+STOP MY NAME, POSITION AND PHOTO
+*/
+/* 
+START NAV BAR
+*/
+
   .nav-bar {
     position: sticky;
     display: flex;
-    top: 0;
     z-index: 1;
+    width: 100vw;
     column-gap: 0px;
-    width: 1866px;
     height: 150px;
-    margin-left: -2185px;
-    margin-top: 680px;
+    margin-top: 140px;
+    margin-left: -1900px;
     visibility: hidden;
     background-color: var(--light);
-    transition: 0.3s
+    transition: 0.3s;
   }
 
-  .switch-input:checked ~ .nav-bar {
+  .toggle-switch:has(> .switch-input:checked) ~ .nav-bar {
     visibility: visible;
     transform: translateX(1890px);
     transition: 0.3s;
@@ -225,18 +265,27 @@
   }
 
   .nav-bar-element {
+    position: relative;
+    width: 20%;
     color: var(--dark);
+    text-align: center;
     padding-top: 70px;
-    padding-right: 140.4px;
-    padding-left: 140px;
     text-decoration: none;
     box-shadow: inset 0px 7px 3px -3px rgba(0,0,0,0.9);
   }
 
+/* 
+STOP NAV BAR
+*/
+/* 
+START ABOUT ME SECTION
+*/
+
   .about-me-section {
-    position: absolute;
+    position: relative;
+    display: none;
     color: white;
-    margin-top: 850px;
+    margin-top: 10px;
     margin-left: -8px;
     padding-bottom: 50px;
     box-shadow: 0px 7px 3px -3px rgba(0,0,0,0.9);
@@ -244,15 +293,26 @@
 
   .personal-description {
     font-size: 25px;
-    margin-top: 200px;
+    margin-top: 50px;
     margin-left: 50px;
     margin-right: 50px;
     display: none;
   }
 
-  .toggle-switch:has(> .switch-input:checked) ~ .about-me-section > .personal-description {
+  .toggle-switch:has(> .switch-input:checked) ~ .about-me-section {
+    display: initial;
+  }
+
+  .toggle-switch:has(> .switch-input:checked) ~ .about-me-section > .personal-description{
     display: flex;
   }
+
+/* 
+STOP ABOUT ME SECTION
+*/
+/* 
+START SKILLS SECTION
+*/
 
   .skills-section {
     position: absolute;
@@ -263,3 +323,7 @@
   .toggle-switch:has(> .switch-input:checked) ~ .skills-section > .personal-description {
     display:flex;
   }
+
+/* 
+STOP ABOUT ME SECTION
+*/
