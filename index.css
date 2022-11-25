@@ -207,7 +207,7 @@ START MY NAME, POSITION AND PHOTO
     color: white;
     font-size: 30px;
     margin-left: 30px;
-    margin-top: -420px;
+    margin-top: -400px;
     visibility: hidden;
     transform: translateY(-550px);
     transition: 0.3s;
@@ -264,6 +264,7 @@ START NAV BAR
     transform: translateX(1890px);
     transition: 0.3s;
     transition-delay: 0.5s;
+    transition-property: transform, height;
   }
 
   .nav-bar-element {
@@ -285,7 +286,7 @@ START ABOUT ME SECTION
 
   .about-me-section {
     position: relative;
-    height: 0px;
+    height: -100px;
     color: white;
     margin-top: 10px;
     margin-left: -8px;
@@ -295,6 +296,7 @@ START ABOUT ME SECTION
 
   .personal-description {
     font-size: 0px;
+    width: 50vw;
     margin: 0px;
     margin-top: 0px;
     margin-left: 0px;
@@ -305,12 +307,14 @@ START ABOUT ME SECTION
     box-shadow: 0px 7px 3px -3px rgba(0,0,0,0.9);
     height: auto;
     transition-delay: 0.8s;
+    transition-property: height, box-shadow;
   }
 
   .toggle-switch:has(> .switch-input:checked) ~ .about-me-section > .personal-description{
     font-size: 25px;
     margin: 50px 50px 0px;
     transition-delay: 0.8s;
+    transition-property: font-size;
   }
 
 /* 
@@ -319,21 +323,29 @@ STOP ABOUT ME SECTION
 /* 
 START SKILLS SECTION
 */
-/*
   .skills-section {
     position: relative;
+    height: -100px;
     color: white;
-    display: none;
+    margin-top: 10px;
+    margin-left: -8px;
+    padding-bottom: 50px;
+    box-shadow: none;
   }
 
   .toggle-switch:has(> .switch-input:checked) ~ .skills-section {
-    display: initial;
+    box-shadow: 0px 7px 3px -3px rgba(0,0,0,0.9);
+    height: auto;
+    transition-delay: 0.8s;
+    transition-property: height, box-shadow;
   }
 
-  .toggle-switch:has(> .switch-input:checked) ~ .skills-section > .personal-description {
-    display:flex;
+  .toggle-switch:has(> .switch-input:checked) ~ .skills-section > .personal-description{
+    font-size: 25px;
+    margin: 50px 50px 0px;
+    transition-delay: 0.8s;
+    transition-property: font-size;
   }
-*/
 /* 
 STOP ABOUT ME SECTION
 */
