@@ -10,6 +10,10 @@
     overflow-x: hidden;
   }
 
+  body:has(> .toggle-switch:has(> .switch-input:checked)) {
+    height: 4000px;
+  }
+
   ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
@@ -32,10 +36,6 @@ START SWITCH
     z-index: 1;
     margin-left: 160px;
     margin-top: 100px;
-  }
-
-  .toggle-switch:has(> .switch-input:checked) {
-    height: 2000px;
   }
 
   .outter-switch {
@@ -246,10 +246,11 @@ START NAV BAR
   .nav-bar {
     position: sticky;
     display: flex;
+    top: 0;
     z-index: 1;
     width: 100vw;
     column-gap: 0px;
-    height: 150px;
+    height: 0px;
     margin-top: 140px;
     margin-left: -1900px;
     visibility: hidden;
@@ -259,6 +260,7 @@ START NAV BAR
 
   .toggle-switch:has(> .switch-input:checked) ~ .nav-bar {
     visibility: visible;
+    height: 150px;
     transform: translateX(1890px);
     transition: 0.3s;
     transition-delay: 0.5s;
@@ -283,28 +285,32 @@ START ABOUT ME SECTION
 
   .about-me-section {
     position: relative;
-    display: none;
+    height: 0px;
     color: white;
     margin-top: 10px;
     margin-left: -8px;
     padding-bottom: 50px;
-    box-shadow: 0px 7px 3px -3px rgba(0,0,0,0.9);
+    box-shadow: none;
   }
 
   .personal-description {
-    font-size: 25px;
-    margin-top: 50px;
-    margin-left: 50px;
-    margin-right: 50px;
-    display: none;
+    font-size: 0px;
+    margin: 0px;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
   }
 
-  .toggle-switch:has(> .switch-input:checked) ~ .about-me-section {
-    display: initial;
+  .toggle-switch:has(> .switch-input:checked) ~ .about-me-section{
+    box-shadow: 0px 7px 3px -3px rgba(0,0,0,0.9);
+    height: auto;
+    transition-delay: 0.8s;
   }
 
   .toggle-switch:has(> .switch-input:checked) ~ .about-me-section > .personal-description{
-    display: flex;
+    font-size: 25px;
+    margin: 50px 50px 0px;
+    transition-delay: 0.8s;
   }
 
 /* 
@@ -313,17 +319,21 @@ STOP ABOUT ME SECTION
 /* 
 START SKILLS SECTION
 */
-
+/*
   .skills-section {
-    position: absolute;
+    position: relative;
     color: white;
-    margin-top: 1152px;
+    display: none;
+  }
+
+  .toggle-switch:has(> .switch-input:checked) ~ .skills-section {
+    display: initial;
   }
 
   .toggle-switch:has(> .switch-input:checked) ~ .skills-section > .personal-description {
     display:flex;
   }
-
+*/
 /* 
 STOP ABOUT ME SECTION
 */
