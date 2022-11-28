@@ -247,7 +247,7 @@ START NAV BAR
     position: sticky;
     display: flex;
     top: 0;
-    z-index: 1;
+    z-index: 10;
     width: 100vw;
     column-gap: 0px;
     height: 0px;
@@ -295,17 +295,17 @@ START ABOUT ME SECTION
   }
 
   .personal-description {
+    position: relative;
     font-size: 0px;
     width: 50vw;
-    margin: 0px;
-    margin-top: 0px;
-    margin-left: 0px;
-    margin-right: 0px;
+    left: 700px;
+    top: -500px;
+    margin: auto;
   }
 
   .toggle-switch:has(> .switch-input:checked) ~ .about-me-section{
     box-shadow: 0px 7px 3px -3px rgba(0,0,0,0.9);
-    height: auto;
+    height: 500px;
     transition-delay: 0.8s;
     transition-property: height, box-shadow;
   }
@@ -317,6 +317,218 @@ START ABOUT ME SECTION
     transition-property: font-size;
   }
 
+/* 
+START COFFEE CUP
+*/
+
+  .coffee-container {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+    height: -0px;
+  }
+
+  .toggle-switch:has(> .switch-input:checked) ~ .about-me-section > .coffee-container {
+    height: 500px;
+    padding-left: 150px;
+    margin-top: 100px;
+    transition-delay: 0.8s;
+    transition-property: height;
+  }
+  
+  .cup {
+    position: absolute;
+    height: 550px;
+    width: 500px;
+    overflow: hidden;
+    z-index: 9;
+    transition: 0.5s;
+    transition-property: padding-left;
+  }
+
+  .cup-body {
+    position: absolute;
+    overflow: hidden;
+    max-height: 350px;
+    height: 350px;
+    width: 300px;
+    background-image: linear-gradient(to right, #b9b9b9 , #FFFFFF);
+    margin-left: 100px;
+    margin-top: 75px;
+    border-bottom-left-radius: 100%50%;
+    border-bottom-right-radius: 100%50%;
+    z-index: 1;
+    transform: perspective(10px) rotateX(0deg);
+    transition: transform 0s, max-height 0.4s, margin-top 0.4s;
+    transition-property: transform max-height margin-top;
+  }
+
+  .cup-margin-shape {
+    position: absolute;
+    max-height: 150px;
+    max-width: 300px;
+    height: 150px;
+    width: 300px;
+    background-image: linear-gradient(to right, #b9b9b9 , #FFFFFF);
+    margin-top:0px;
+    margin-left: 100px;
+    border-radius: 50%;
+    z-index:5;
+    transition: 0.3s;
+    transition-property: height max-height max-width width margin-top margin-left;
+  }
+
+  .cup-black-shape {
+    position: absolute;
+    overflow: hidden;
+    max-height: 130px;
+    max-width: 280px;
+    height: 130px;
+    width: 280px;
+    background-image: linear-gradient(to left, #151515 70%, #353535);
+    margin-top: 10px;
+    margin-left: 110px;
+    border-radius: 50%;
+    z-index: 5;
+    transition: 0.3s;
+    transition-property: height max-height max-width width margin-left;
+  }
+
+  .coffee {
+    position: absolute;
+    max-height: 130px;
+    max-width: 280px;
+    height: 130px;
+    width: 280px;
+    background-image: radial-gradient(#ca9970, #866247);
+    margin-top: 35px;
+    margin-left: 0;
+    border-radius: 50%;
+    z-index: 6;
+    transition: 0.3s;
+    transition-property: height max-height max-width width margin-top margin-left;
+  }
+  
+  .cup-handle {
+    position: absolute;
+    max-width: 80px;
+    height: 150px;
+    width: 80px;
+    border-radius: 150px;
+    border-right: 25px solid #b9b9b9;
+    border-bottom: 25px solid #b9b9b9;
+    border-top: 25px solid #b9b9b9;
+    border-left: 25px solid #b9b9b9;
+    margin-top: 125px;
+    margin-left: 15px;
+    z-index: 0;
+    transition: margin-left 0.3s, transform 0.3s, border-left 0.2s, border-top 0.3s, border-right 0.3s, border-bottom 0.3s, margin-top 0.3s;
+    transform: perspective(400px) rotateX(0deg) rotateZ(1deg);
+    transition-property: margin-left transform border-left border-top border-right border-bottom margin-top;
+  }
+
+  .coffee-text {
+    font-size: 110px;
+    color: #e4cbb6;
+    padding-left: 15px;
+    padding-top: 0px;
+    margin-left: 0px;
+    transform: perspective(400px) rotateX(50deg) rotateZ(-1deg);
+    transition: 0.3s;
+    transition-property: margin-left transform;
+  }
+
+  .joke-text {
+    font-size: 0;
+    color: #e4cbb6;
+    opacity: 0;
+    text-align: center;
+    transition: 0s;
+    transition-property: opacity;
+  }
+
+/* 
+START COFFEE CUP ANIMATION
+*/
+
+  .cup:hover > .cup-body{
+    max-height: 0px;
+    margin-top: 260px;
+    transform: perspective(10px) rotateX(-6deg);
+    transition: transform 1s, max-height 0.5s, margin-top 0.5s;
+    transition-property: transform max-height margin-top;
+    transition-delay: 0.03s;
+  }
+
+  .cup:hover ~ .cup-handle {
+    transform: perspective(400px) rotateX(-85deg) rotateZ(-30deg);
+    border-right: 60px solid #b9b9b9;
+    border-bottom: 60px solid #b9b9b9;
+    border-top: 60px solid #b9b9b9;
+    border-left: 200px solid #b9b9b9;
+    margin-left: -110px;
+    margin-top: 90px;
+    transition: margin-left 0.4s, transform 0.5s, border-top 0.5s, border-bottom 0.5s, border-left 0.4s, border-right 0.5s, margin-top 0.5s;
+    transition-property: margin-left transform border-top border-bottom border-left border-right margin-top;
+    transition-delay: 0.1s, 0s, 0s, 0s, 0.1s, 0s, 0s;
+  }
+
+  .cup:hover > .cup-margin-shape {
+    max-height: 450px;
+    margin-left: 20px;
+    height: 450px;
+    max-width: 450px;
+    width: 450px;
+    transition: 0.5s;
+    transition-property: max-height height max-width width margin-left;
+  }
+
+  .cup:hover > .cup-black-shape {
+    max-height: 430px;
+    margin-left: 30px;
+    height: 430px;
+    max-width: 430px;
+    width: 430px;
+    transition: 0.5s;
+    transition-property: max-height height max-width width margin-left;
+  }
+
+  .cup:hover > .cup-black-shape > .coffee {
+    max-height: 430px;
+    margin-left: 0px;
+    margin-top: 0px;
+    height: 430px;
+    max-width: 430px;
+    width: 430px;
+    transition: 0.5s;
+    transition-property: max-height height max-width width margin-left margin-top;
+  }
+
+  .cup:hover > .cup-black-shape > .coffee > .coffee-text {
+    margin-left: 80px;
+    margin-top: 150px;
+    transform: perspective(400px) rotateX(0deg);
+    opacity: 0;
+    transition: margin-left 0.5s, margin-top 0.5s, transform 0.5s, opacity 0.5s linear 0.5s;
+    transition-property: margin-left margin-top transform opacity;
+  }
+
+  .cup:hover > .cup-black-shape > .coffee > .joke-text {
+    margin-left: 0px;
+    margin-top: -100px;
+    opacity: 1;
+    font-size: 18px;
+    transition: margin-left 0s, margin-top 0s, opacity 0.5s linear 0.5s;
+    transition-property: margin-left margin-top font-size opacity;
+    transition-delay: 1s;
+  }
+
+/* 
+STOP COFFEE CUP ANIMATION
+*/
+/* 
+STOP COFFEE CUP
+*/
 /* 
 STOP ABOUT ME SECTION
 */
