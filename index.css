@@ -6,6 +6,7 @@
   
   body {
     background-color: var(--dark);
+    margin: 0px;
     font-family: "Comfortaa", sans-serif;
     overflow-x: hidden;
   }
@@ -269,10 +270,11 @@ START NAV BAR
 
   .nav-bar-element {
     position: relative;
-    width: 20%;
-    color: var(--dark);
-    text-align: center;
-    padding-top: 70px;
+    display: flex;
+    justify-content: center; /* align horizontal */
+    align-items: center; 
+    width: 20vw;
+    height: 150px;
     text-decoration: none;
     box-shadow: inset 0px 7px 3px -3px rgba(0,0,0,0.9);
   }
@@ -286,11 +288,8 @@ START ABOUT ME SECTION
 
   .about-me-section {
     position: relative;
-    height: -100px;
+    height: 0px;
     color: white;
-    margin-top: 10px;
-    margin-left: -8px;
-    padding-bottom: 50px;
     box-shadow: none;
   }
 
@@ -305,9 +304,12 @@ START ABOUT ME SECTION
 
   .toggle-switch:has(> .switch-input:checked) ~ .about-me-section{
     box-shadow: 0px 7px 3px -3px rgba(0,0,0,0.9);
+    margin-top: 10px;
+    margin-left: -8px;
+    padding-bottom: 50px;
     height: 500px;
     transition-delay: 0.8s;
-    transition-property: height, box-shadow;
+    transition-property: height, box-shadow, margin-top, margin-left, padding-bottom;
   }
 
   .toggle-switch:has(> .switch-input:checked) ~ .about-me-section > .personal-description{
@@ -505,17 +507,18 @@ START COFFEE CUP ANIMATION
   }
 
   .cup:hover > .cup-black-shape > .coffee > .coffee-text {
-    margin-left: 80px;
-    margin-top: 150px;
+    font-size: 170px;
+    margin-left: 10px;
+    margin-top: 130px;
     transform: perspective(400px) rotateX(0deg);
     opacity: 0;
-    transition: margin-left 0.5s, margin-top 0.5s, transform 0.5s, opacity 0.5s linear 0.5s;
-    transition-property: margin-left margin-top transform opacity;
+    transition: margin-left 0.5s, margin-top 0.5s, transform 0.5s, opacity 0.5s linear 0.5s, font-size 0.5s;
+    transition-property: margin-left margin-top transform opacity font-size;
   }
 
   .cup:hover > .cup-black-shape > .coffee > .joke-text {
     margin-left: 0px;
-    margin-top: -100px;
+    margin-top: -140px;
     opacity: 1;
     font-size: 18px;
     transition: margin-left 0s, margin-top 0s, opacity 0.5s linear 0.5s;
@@ -537,27 +540,203 @@ START SKILLS SECTION
 */
   .skills-section {
     position: relative;
-    height: -100px;
+    height: 0px;
     color: white;
-    margin-top: 10px;
-    margin-left: -8px;
-    padding-bottom: 50px;
     box-shadow: none;
+    overflow: hidden;
   }
 
   .toggle-switch:has(> .switch-input:checked) ~ .skills-section {
     box-shadow: 0px 7px 3px -3px rgba(0,0,0,0.9);
-    height: auto;
+    margin-top: 10px;
+    margin-left: -8px;
+    height: 1000px;
     transition-delay: 0.8s;
-    transition-property: height, box-shadow;
+    transition-property: height, box-shadow, margin-top, margin-left;
   }
 
-  .toggle-switch:has(> .switch-input:checked) ~ .skills-section > .personal-description{
-    font-size: 25px;
-    margin: 50px 50px 0px;
-    transition-delay: 0.8s;
-    transition-property: font-size;
+  .skills-section .skill-section-label {
+    position: relative;
+    height: auto;
+    width: auto;
+  }
+
+  .skills-section .skill-section-label .skill-section-container {
+    position: relative;
+    background-color: var(--dark);
+    width: 100vw;
+    height: 50px;
+    overflow: hidden;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.9);
+    transition: 0.5s;
+    transition-property: height, background-color;
+  }
+
+  .skills-section .skill-section-label .skill-section-container .skill-section-container-text {
+    position: relative;
+    font-size: 50px;
+    color: rgb(105, 105, 105);
+    transition: 0.5s;
+    transition-property: color;
+  }
+
+  .skill-switch-input {
+    position: absolute;
+    display: none;
+  }
+
+  .skill-section-container:hover {
+    cursor: pointer;
+    background-color: rgb(105, 105, 105);
+  }
+
+  .skill-switch-input:checked + .skill-section-label .skill-section-container {
+    height: var(--height);
+    background-color: rgb(105, 105, 105);
+    transition: 0.5s;
+    transition-property: height, background-color;
+  }
+
+  .skill-section-container:hover > .skill-section-container-text {
+    color: var(--light);
+    transition: 0.5s;
+    transition-property: color;
+  }
+
+  .skill-switch-input:checked + .skill-section-label .skill-section-container > .skill-section-container-text {
+    color: var(--light);
+    transition: 0.5s;
+    transition-property: color;
+  }
+
+  .skill-container {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    overflow: hidden;
+    opacity: 0;
+    width: 24vw;
+    height: 0px;
+    font-size: 0px;
+    transition: 0.3s;
+    transition-property: height, font-size;
+    transition-delay: 0.3s, 0s;
+  }
+
+  .skill-switch-input:checked + .skill-section-label .skill-section-container > .skill-container {
+    opacity: 1;
+    height: 250px;
+    transition: height 0s, opacity 0.5s;
+    transition-delay: 0.5s;
+  }
+
+  .skill-container #circle {
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-60deg) rotateY(180deg);
+  }
+
+  .skill-container #circle #skill-circle-bar {
+    fill: transparent;
+    stroke: var(--light);
+    stroke-width: 0;
+    stroke-dasharray: 500;
+    stroke-dashoffset: 500;
+    stroke-linecap: round;
+  }
+
+  .skill-switch-input:checked + .skill-section-label .skill-section-container > .skill-container #circle #skill-circle-bar {
+    stroke-width: 20;
+    transition: stroke-width;
+    transition-delay: 0.5s;
+    animation: stroke 0.6s linear 0.5s forwards;
+  }
+
+  .skill-container #circle #full-circle-bar {
+    fill: transparent;
+    stroke: var(--dark);
+    stroke-width: 20;
+    stroke-dasharray: 500;
+    stroke-dashoffset: 165;
+    stroke-linecap: round;
+  }
+
+  .skill-container #advanced-skill-level {
+    position: absolute;
+    color: var(--dark);
+    height: 200px;
+    width: 200px;
+    margin-left: -25px;
+    margin-top: 14px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(80deg);
+  }
+
+  .skill-container #basic-skill-level {
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    margin-left: 4px;
+    margin-top: 25px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(170deg);
+  }
+
+  .skill-container #newbie-skill-level {
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    margin-left: -25px;
+    margin-top: -5px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(280deg);
+  }
+
+  .skill-container .skill-text {
+    position: absolute;
+    font-size: 14px;
+    color: var(--light);
+  }
+
+  @keyframes stroke {
+    100%{
+      stroke-dashoffset: var(--stroke-dashoffset-final-value);
+    }
   }
 /* 
-STOP ABOUT ME SECTION
+STOP SKILLS SECTION
+*/
+/* 
+START WORK EXPERIENCE SECTION
+*/
+
+.work-experience-section {
+  position: relative;
+  height: 0px;
+  color: white;
+  box-shadow: none;
+}
+
+.toggle-switch:has(> .switch-input:checked) ~ .work-experience-section {
+  box-shadow: 0px 7px 3px -3px rgba(0,0,0,0.9);
+  margin-top: 10px;
+  margin-left: -8px;
+  padding-bottom: 50px;
+  height: 700px;
+  transition-delay: 0.8s;
+  transition-property: height, box-shadow, margin-top, margin-left, padding-bottom;
+}
+
+/* 
+STOP WORK EXPERIENCE SECTION
 */
