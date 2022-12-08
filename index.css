@@ -626,7 +626,7 @@ START SKILLS SECTION
     text-align: center;
     overflow: hidden;
     opacity: 0;
-    width: 24vw;
+    width: var(--skill-width);
     height: 0px;
     font-size: 0px;
     transition: 0.3s;
@@ -663,7 +663,7 @@ START SKILLS SECTION
     stroke-width: 20;
     transition: stroke-width;
     transition-delay: 0.5s;
-    animation: stroke 0.6s linear 0.5s forwards;
+    animation: stroke 0.6s ease-in-out 0.5s forwards;
   }
 
   .skills-section .skill-section-label .skill-section-container .skill-container #circle #full-circle-bar {
