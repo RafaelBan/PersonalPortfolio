@@ -39,7 +39,21 @@ START SWITCH
     margin-top: 100px;
   }
 
-  .outter-switch {
+  .toggle-switch .switch-input {
+    position: absolute;
+    display: none;
+  }
+
+  .toggle-switch .switch-background {
+    position: absolute;
+    width: 125px;
+    height: 55px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .toggle-switch .switch-background .outter-switch {
     position: absolute;
     width: 150px;
     height: 80px;
@@ -51,41 +65,11 @@ START SWITCH
     transition: 0.3s
   }
 
-  .portofolio-text {
-    color: var(--light);
-    position: absolute;
-    transform: translate(-50%,-50%);
-    top: 29px;
-    left: 35px;
-    font-size: 9px;
-    transition: visibility 0s, opacity 1s linear;
+  .toggle-switch .switch-input:checked ~ .switch-background .outter-switch {
+    background-color: var(--dark);
   }
 
-  .hello-text {
-    color: var(--dark);
-    position: absolute;
-    opacity: 0;
-    transform: translate(-50%,-50%);
-    top: 29px;
-    left: 87px;
-    font-size: 20px;
-  }
-  
-  .switch-background {
-    position: absolute;
-    width: 125px;
-    height: 55px;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  
-  .switch-input {
-    position: absolute;
-    display: none;
-  }
-  
-  .slider {
+  .toggle-switch .switch-background .slider {
     position: absolute;
     width: 125px;
     height: 55px;
@@ -94,21 +78,12 @@ START SWITCH
     box-shadow: inset 0px 0px 10px rgba(0,0,0,0.9);
     transition: 0.3s;
   }
-  
-  .switch-input:checked ~ label .slider {
+
+  .toggle-switch .switch-input:checked ~ .switch-background .slider {
     background-color: var(--light);
   }
 
-  .switch-input:checked ~ label .outter-switch {
-    background-color: var(--dark);
-  }
-  
-  .switch-input:checked ~ label .hello-text {
-    opacity: 1;
-    transition: visibility 0s, opacity 1s linear;
-  }
-
-  .slider::before {
+  .toggle-switch .switch-background .slider::before {
     content: "";
     position: absolute;
     left: 71px;
@@ -120,15 +95,40 @@ START SWITCH
     transition: 0.3s;
   }
 
-  .switch-input:checked ~ label .slider::before {
+  .toggle-switch .switch-input:checked ~ .switch-background .slider::before {
     transform: translateX(-70px);
     background-color: var(--light);
     box-shadow: inset -3px 0px 10px rgba(0,0,0,0.9);
   }
 
-  .switch-input:checked ~ label .portofolio-text {
+  .toggle-switch .switch-background .portofolio-text {
+    color: var(--light);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 29px;
+    left: 35px;
+    font-size: 9px;
+    transition: visibility 0s, opacity 1s linear;
+  }
+
+  .toggle-switch .switch-input:checked ~ .switch-background .portofolio-text {
     opacity: 0;
     transition: 0s;
+  }
+
+  .toggle-switch .switch-background .hello-text {
+    color: var(--dark);
+    position: absolute;
+    opacity: 0;
+    transform: translate(-50%,-50%);
+    top: 29px;
+    left: 87px;
+    font-size: 20px;
+  }
+
+  .toggle-switch .switch-input:checked ~ .switch-background .hello-text {
+    opacity: 1;
+    transition: visibility 0s, opacity 1s linear;
   }
 
 /* 
@@ -143,7 +143,7 @@ START HEX / NON HEX HELLO WORLD TEXT
     display: flex;
   }
 
-  .hex-hello-world-text {
+  .header-container .hex-hello-world-text {
     position: absolute;
     margin-top: 220px;
     margin-left: 100px;
@@ -153,7 +153,16 @@ START HEX / NON HEX HELLO WORLD TEXT
     transition-delay: 0.5s;
   }
 
-  .hello-world-text {
+  .toggle-switch:has(> .switch-input:checked) ~ .header-container .hex-hello-world-text {
+    opacity: 0;
+    transition: 1s;
+  }
+
+  .toggle-switch:has(> .switch-input:checked) ~ .header-container .hex-hello-world-text {
+    visibility: hidden;
+  }
+
+  .header-container .hello-world-text {
     position: absolute;
     color: white;
     margin-top: 220px;
@@ -163,16 +172,7 @@ START HEX / NON HEX HELLO WORLD TEXT
     transition: 1s;
   }
 
-  .toggle-switch:has(> .switch-input:checked) ~ .header-container > .hex-hello-world-text {
-    opacity: 0;
-    transition: 1s;
-  }
-
-  .toggle-switch:has(> .switch-input:checked) ~ .header-container > .hex-hello-world-text {
-    visibility: hidden;
-  }
-
-  .toggle-switch:has(> .switch-input:checked) ~ .header-container > .hello-world-text {
+  .toggle-switch:has(> .switch-input:checked) ~ .header-container .hello-world-text {
     visibility: visible;
     opacity: 1;
     transition: 1s;
@@ -185,7 +185,7 @@ END HEX / NON HEX HELLO WORLD TEXT
 /* 
 START MY NAME, POSITION AND PHOTO
 */
-  .my-name-text {
+  .header-container .my-name-text {
     width: 500px;
     margin-top: 250px;
     margin-left: 40px;
@@ -196,14 +196,14 @@ START MY NAME, POSITION AND PHOTO
     transition: 0.3s;
   }
 
-  .toggle-switch:has(> .switch-input:checked) ~ .header-container > .my-name-text {
+  .toggle-switch:has(> .switch-input:checked) ~ .header-container .my-name-text {
     visibility: visible;
     transform: translateX(0px);
     transition: 0.3s;
     transition-delay: 0.5s;
   }
 
-  .current-position {
+  .header-container .current-position {
     width: 30px;
     color: white;
     font-size: 30px;
@@ -214,14 +214,14 @@ START MY NAME, POSITION AND PHOTO
     transition: 0.3s;
   }
 
-  .toggle-switch:has(> .switch-input:checked) ~ .header-container > .current-position {
+  .toggle-switch:has(> .switch-input:checked) ~ .header-container .current-position {
     visibility: visible;
     transform: translateY(475px);
     transition: 0.3s;
     transition-delay: 0.5s;
   }
 
-  .me-photo {
+  .header-container .me-photo {
     margin-top: -900px;
     margin-left: auto;
     margin-right: 50px;
@@ -230,7 +230,7 @@ START MY NAME, POSITION AND PHOTO
     transition: 0.3s;
   }
 
-  .toggle-switch:has(> .switch-input:checked) ~ .header-container > .me-photo {
+  .toggle-switch:has(> .switch-input:checked) ~ .header-container .me-photo {
     visibility: visible;
     transform: translateY(925px);
     transition: 0.3s;
@@ -268,7 +268,7 @@ START NAV BAR
     transition-property: transform, height;
   }
 
-  .nav-bar-element {
+  .nav-bar .nav-bar-element {
     position: relative;
     display: flex;
     justify-content: center; /* align horizontal */
@@ -293,15 +293,6 @@ START ABOUT ME SECTION
     box-shadow: none;
   }
 
-  .personal-description {
-    position: relative;
-    font-size: 0px;
-    width: 50vw;
-    left: 700px;
-    top: -500px;
-    margin: auto;
-  }
-
   .toggle-switch:has(> .switch-input:checked) ~ .about-me-section{
     box-shadow: 0px 7px 3px -3px rgba(0,0,0,0.9);
     margin-top: 10px;
@@ -312,25 +303,18 @@ START ABOUT ME SECTION
     transition-property: height, box-shadow, margin-top, margin-left, padding-bottom;
   }
 
-  .toggle-switch:has(> .switch-input:checked) ~ .about-me-section > .personal-description{
-    font-size: 25px;
-    margin: 50px 50px 0px;
-    transition-delay: 0.8s;
-    transition-property: font-size;
-  }
-
 /* 
 START COFFEE CUP
 */
 
-  .coffee-container {
+.about-me-section .coffee-container {
     position: relative;
     overflow: hidden;
     width: 500px;
     height: -0px;
   }
 
-  .toggle-switch:has(> .switch-input:checked) ~ .about-me-section > .coffee-container {
+  .toggle-switch:has(> .switch-input:checked) ~ .about-me-section .coffee-container {
     height: 500px;
     padding-left: 150px;
     margin-top: 100px;
@@ -338,7 +322,7 @@ START COFFEE CUP
     transition-property: height;
   }
   
-  .cup {
+  .about-me-section .coffee-container .cup {
     position: absolute;
     height: 550px;
     width: 500px;
@@ -348,7 +332,7 @@ START COFFEE CUP
     transition-property: padding-left;
   }
 
-  .cup-body {
+  .about-me-section .coffee-container .cup .cup-body {
     position: absolute;
     overflow: hidden;
     max-height: 350px;
@@ -365,7 +349,7 @@ START COFFEE CUP
     transition-property: transform max-height margin-top;
   }
 
-  .cup-margin-shape {
+  .about-me-section .coffee-container .cup .cup-margin-shape {
     position: absolute;
     max-height: 150px;
     max-width: 300px;
@@ -380,7 +364,7 @@ START COFFEE CUP
     transition-property: height max-height max-width width margin-top margin-left;
   }
 
-  .cup-black-shape {
+  .about-me-section .coffee-container .cup .cup-black-shape {
     position: absolute;
     overflow: hidden;
     max-height: 130px;
@@ -396,7 +380,7 @@ START COFFEE CUP
     transition-property: height max-height max-width width margin-left;
   }
 
-  .coffee {
+  .about-me-section .coffee-container .cup .cup-black-shape .coffee {
     position: absolute;
     max-height: 130px;
     max-width: 280px;
@@ -410,8 +394,28 @@ START COFFEE CUP
     transition: 0.3s;
     transition-property: height max-height max-width width margin-top margin-left;
   }
-  
-  .cup-handle {
+
+  .about-me-section .coffee-container .cup .cup-black-shape .coffee .coffee-text {
+    font-size: 110px;
+    color: #e4cbb6;
+    padding-left: 15px;
+    padding-top: 0px;
+    margin-left: 0px;
+    transform: perspective(400px) rotateX(50deg) rotateZ(-1deg);
+    transition: 0.3s;
+    transition-property: margin-left transform;
+  }
+
+  .about-me-section .coffee-container .cup .cup-black-shape .coffee .joke-text {
+    font-size: 0;
+    color: #e4cbb6;
+    opacity: 0;
+    text-align: center;
+    transition: 0s;
+    transition-property: opacity;
+  }
+
+  .about-me-section .coffee-container .cup-handle {
     position: absolute;
     max-width: 80px;
     height: 150px;
@@ -429,31 +433,11 @@ START COFFEE CUP
     transition-property: margin-left transform border-left border-top border-right border-bottom margin-top;
   }
 
-  .coffee-text {
-    font-size: 110px;
-    color: #e4cbb6;
-    padding-left: 15px;
-    padding-top: 0px;
-    margin-left: 0px;
-    transform: perspective(400px) rotateX(50deg) rotateZ(-1deg);
-    transition: 0.3s;
-    transition-property: margin-left transform;
-  }
-
-  .joke-text {
-    font-size: 0;
-    color: #e4cbb6;
-    opacity: 0;
-    text-align: center;
-    transition: 0s;
-    transition-property: opacity;
-  }
-
 /* 
 START COFFEE CUP ANIMATION
 */
 
-  .cup:hover > .cup-body{
+  .about-me-section .coffee-container .cup:hover .cup-body {
     max-height: 0px;
     margin-top: 260px;
     transform: perspective(10px) rotateX(-6deg);
@@ -462,7 +446,7 @@ START COFFEE CUP ANIMATION
     transition-delay: 0.03s;
   }
 
-  .cup:hover ~ .cup-handle {
+  .about-me-section .coffee-container .cup:hover ~ .cup-handle {
     transform: perspective(400px) rotateX(-85deg) rotateZ(-30deg);
     border-right: 60px solid #b9b9b9;
     border-bottom: 60px solid #b9b9b9;
@@ -475,7 +459,7 @@ START COFFEE CUP ANIMATION
     transition-delay: 0.1s, 0s, 0s, 0s, 0.1s, 0s, 0s;
   }
 
-  .cup:hover > .cup-margin-shape {
+  .about-me-section .coffee-container .cup:hover .cup-margin-shape {
     max-height: 450px;
     margin-left: 20px;
     height: 450px;
@@ -485,7 +469,7 @@ START COFFEE CUP ANIMATION
     transition-property: max-height height max-width width margin-left;
   }
 
-  .cup:hover > .cup-black-shape {
+  .about-me-section .coffee-container .cup:hover .cup-black-shape {
     max-height: 430px;
     margin-left: 30px;
     height: 430px;
@@ -495,7 +479,7 @@ START COFFEE CUP ANIMATION
     transition-property: max-height height max-width width margin-left;
   }
 
-  .cup:hover > .cup-black-shape > .coffee {
+  .about-me-section .coffee-container .cup:hover .cup-black-shape .coffee {
     max-height: 430px;
     margin-left: 0px;
     margin-top: 0px;
@@ -506,7 +490,7 @@ START COFFEE CUP ANIMATION
     transition-property: max-height height max-width width margin-left margin-top;
   }
 
-  .cup:hover > .cup-black-shape > .coffee > .coffee-text {
+  .about-me-section .coffee-container .cup:hover .cup-black-shape .coffee .coffee-text {
     font-size: 170px;
     margin-left: 10px;
     margin-top: 130px;
@@ -516,7 +500,7 @@ START COFFEE CUP ANIMATION
     transition-property: margin-left margin-top transform opacity font-size;
   }
 
-  .cup:hover > .cup-black-shape > .coffee > .joke-text {
+  .about-me-section .coffee-container .cup:hover .cup-black-shape .coffee .joke-text {
     margin-left: 0px;
     margin-top: -140px;
     opacity: 1;
@@ -531,6 +515,29 @@ STOP COFFEE CUP ANIMATION
 */
 /* 
 STOP COFFEE CUP
+*/
+/*
+START PERSONAL DESCRIPTION
+*/
+
+  .about-me-section .personal-description {
+    position: relative;
+    font-size: 0px;
+    width: 50vw;
+    left: 700px;
+    top: -500px;
+    margin: auto;
+  }
+
+  .toggle-switch:has(> .switch-input:checked) ~ .about-me-section > .personal-description{
+    font-size: 25px;
+    margin: 50px 50px 0px;
+    transition-delay: 0.8s;
+    transition-property: font-size;
+  }
+
+/*
+END PERSONAL DESCRIPTION
 */
 /* 
 STOP ABOUT ME SECTION
@@ -553,6 +560,11 @@ START SKILLS SECTION
     height: 1000px;
     transition-delay: 0.8s;
     transition-property: height, box-shadow, margin-top, margin-left;
+  }
+
+  .skills-section .skill-switch-input {
+    position: absolute;
+    display: none;
   }
 
   .skills-section .skill-section-label {
@@ -584,36 +596,31 @@ START SKILLS SECTION
     transition-property: color;
   }
 
-  .skill-switch-input {
-    position: absolute;
-    display: none;
-  }
-
-  .skill-section-label:hover > .skill-section-container {
+  .skills-section .skill-section-label:hover .skill-section-container {
     cursor: pointer;
     background-color: rgb(105, 105, 105);
   }
 
-  .skill-switch-input:checked + .skill-section-label .skill-section-container {
+  .skills-section .skill-switch-input:checked + .skill-section-label .skill-section-container {
     height: var(--height);
     background-color: rgb(105, 105, 105);
     transition: 0.5s;
     transition-property: height, background-color;
   }
 
-  .skill-section-label:hover > .skill-section-container > .skill-section-container-text {
+  .skills-section .skill-section-label:hover .skill-section-container .skill-section-container-text {
     color: var(--light);
     transition: 0.5s;
     transition-property: color;
   }
 
-  .skill-switch-input:checked + .skill-section-label .skill-section-container > .skill-section-container-text {
+  .skills-section .skill-switch-input:checked + .skill-section-label .skill-section-container .skill-section-container-text {
     color: var(--light);
     transition: 0.5s;
     transition-property: color;
   }
 
-  .skill-container {
+  .skills-section .skill-section-label .skill-section-container .skill-container {
     position: relative;
     display: inline-block;
     text-align: center;
@@ -627,14 +634,14 @@ START SKILLS SECTION
     transition-delay: 0.3s, 0s;
   }
 
-  .skill-switch-input:checked + .skill-section-label .skill-section-container > .skill-container {
+  .skills-section .skill-switch-input:checked + .skill-section-label .skill-section-container .skill-container {
     opacity: 1;
     height: 250px;
     transition: height 0s, opacity 0.5s;
     transition-delay: 0.5s;
   }
 
-  .skill-container #circle {
+  .skills-section .skill-section-label .skill-section-container .skill-container #circle {
     position: absolute;
     height: 200px;
     width: 200px;
@@ -643,7 +650,7 @@ START SKILLS SECTION
     transform: translate(-50%, -50%) rotate(-60deg) rotateY(180deg);
   }
 
-  .skill-container #circle #skill-circle-bar {
+  .skills-section .skill-section-label .skill-section-container .skill-container #circle #skill-circle-bar {
     fill: transparent;
     stroke: var(--light);
     stroke-width: 0;
@@ -652,14 +659,14 @@ START SKILLS SECTION
     stroke-linecap: round;
   }
 
-  .skill-switch-input:checked + .skill-section-label .skill-section-container > .skill-container #circle #skill-circle-bar {
+  .skills-section .skill-switch-input:checked + .skill-section-label .skill-section-container .skill-container #circle #skill-circle-bar {
     stroke-width: 20;
     transition: stroke-width;
     transition-delay: 0.5s;
     animation: stroke 0.6s linear 0.5s forwards;
   }
 
-  .skill-container #circle #full-circle-bar {
+  .skills-section .skill-section-label .skill-section-container .skill-container #circle #full-circle-bar {
     fill: transparent;
     stroke: var(--dark);
     stroke-width: 20;
@@ -668,7 +675,7 @@ START SKILLS SECTION
     stroke-linecap: round;
   }
 
-  .skill-container #advanced-skill-level {
+  .skills-section .skill-section-label .skill-section-container .skill-container #advanced-skill-level {
     position: absolute;
     color: var(--dark);
     height: 200px;
@@ -680,7 +687,7 @@ START SKILLS SECTION
     transform: translate(-50%, -50%) rotate(80deg);
   }
 
-  .skill-container #basic-skill-level {
+  .skills-section .skill-section-label .skill-section-container .skill-container #basic-skill-level {
     position: absolute;
     height: 200px;
     width: 200px;
@@ -691,7 +698,7 @@ START SKILLS SECTION
     transform: translate(-50%, -50%) rotate(170deg);
   }
 
-  .skill-container #newbie-skill-level {
+  .skills-section .skill-section-label .skill-section-container .skill-container #newbie-skill-level {
     position: absolute;
     height: 200px;
     width: 200px;
@@ -702,7 +709,7 @@ START SKILLS SECTION
     transform: translate(-50%, -50%) rotate(280deg);
   }
 
-  .skill-container .skill-text {
+  .skills-section .skill-section-label .skill-section-container .skill-container .skill-text {
     position: absolute;
     font-size: 14px;
     color: var(--light);
