@@ -589,7 +589,7 @@ START SKILLS SECTION
     display: none;
   }
 
-  .skill-section-container:hover {
+  .skill-section-label:hover > .skill-section-container {
     cursor: pointer;
     background-color: rgb(105, 105, 105);
   }
@@ -601,7 +601,7 @@ START SKILLS SECTION
     transition-property: height, background-color;
   }
 
-  .skill-section-container:hover > .skill-section-container-text {
+  .skill-section-label:hover > .skill-section-container > .skill-section-container-text {
     color: var(--light);
     transition: 0.5s;
     transition-property: color;
