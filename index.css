@@ -588,13 +588,13 @@ START SKILLS SECTION
   }
 
   .skills-section .skill-switch-input:checked + .skill-section-label {
-    width: 75vw;
+    width: calc(100vw - 500px);
   }
 
   .skills-section #right-skill-section-label {
     border-width: 0px;
     transform: translateZ(1px) rotate(180deg);
-    margin-left: 69vw;
+    margin-left: calc(100vw - 600px);
   }
 
   .skills-section .skill-switch-input:checked + #right-skill-section-label {
@@ -603,8 +603,7 @@ START SKILLS SECTION
 
   .skills-section .skill-section-label .skill-section-container {
     position: relative;
-    width: 75vw;
-    box-shadow: none;
+    width: calc(100vw - 600px);
   }
 
   .skills-section .skill-section-label #right-skill-section-container {
@@ -651,7 +650,7 @@ START SKILLS SECTION
   }
 
   .skills-section .skill-switch-input:checked + .skill-section-label .skill-section-arrow {
-    margin-left: 72.4vw;
+    margin-left: calc(100vw - 550px);
   }
 
   .skills-section .skill-section-label .skill-section-arrow .skill-arrow-design {
@@ -674,7 +673,7 @@ START SKILLS SECTION
     overflow: hidden;
     display: inline-block;
     padding-top: 15px;
-    width: calc(88vw - 260px);
+    width: calc(100vw - 500px);
     height: auto;
   }
 
@@ -682,7 +681,7 @@ START SKILLS SECTION
     position: relative;
     display: inline-block;
     text-align: center;
-    width: var(--skill-width);
+    width: 330px;
     height: 250px;
     font-size: 0px;
     transition: 0.3s;
@@ -786,8 +785,9 @@ START SKILLS SECTION
   .skills-section .skill-section-label .skill-hover-info {
     position: absolute;
     font-size: 12px;
-    margin-left: 68vw;
     top: 0;
+    right: -45px;
+    width: 75px;
   }
 
   .skills-section .skill-section-label #current-skill {
@@ -796,6 +796,10 @@ START SKILLS SECTION
 
   .skills-section .skill-section-label #skill-to-gain {
     color: var(--dark);
+  }
+
+  .skills-section #right-skill-section-label .skill-hover-info {
+    left: -45px;
   }
 
   @keyframes stroke {
