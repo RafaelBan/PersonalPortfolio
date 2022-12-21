@@ -2,6 +2,8 @@
     --light: #d8dbe0;
     --dark: #151515;
     scroll-behavior: smooth;
+    --cursorX: -10vw;
+    --cursorY: -10vh;
   }
   
   body {
@@ -9,10 +11,29 @@
     margin: 0px;
     font-family: "Comfortaa", sans-serif;
     overflow-x: hidden;
+    height: 100%;
   }
 
-  body:has(> .toggle-switch:has(> .switch-input:checked)) {
+  body:before {
+    content: '';
+    display: block;
+    width: 100%;
     height: 100%;
+    position: fixed;
+    pointer-events: none;
+    background: radial-gradient(
+      circle 8vmax at var(--cursorX) var(--cursorY),
+      rgba(0,0,0,0) 0%,
+      rgba(0,0,0,0) 85%,
+      var(--light) 90%,
+      var(--dark) 100%
+    );
+    z-index: 100;
+  }
+
+  body:has(.toggle-switch > .switch-input:checked):before {
+    background: none;
+    z-index: 0;
   }
 
   ::-webkit-scrollbar {
@@ -113,7 +134,6 @@ START SWITCH
 
   .toggle-switch .switch-input:checked ~ .switch-background .portofolio-text {
     opacity: 0;
-    transition: 0s;
   }
 
   .toggle-switch .switch-background .hello-text {
@@ -124,11 +144,11 @@ START SWITCH
     top: 29px;
     left: 87px;
     font-size: 20px;
+    transition: visibility 0s, opacity 1s linear;
   }
 
   .toggle-switch .switch-input:checked ~ .switch-background .hello-text {
     opacity: 1;
-    transition: visibility 0s, opacity 1s linear;
   }
 
 /* 
@@ -141,6 +161,14 @@ START HEX / NON HEX HELLO WORLD TEXT
   .header-container {
     position: relative;
     display: flex;
+    height: 800px;
+    transition-delay: 0.5s;
+  }
+
+  .toggle-switch:has(> .switch-input:checked) ~ .header-container {
+    min-height: 800px;
+    height: 100vh;
+    transition-delay: 0s;
   }
 
   .header-container .hex-hello-world-text {
@@ -175,7 +203,6 @@ START HEX / NON HEX HELLO WORLD TEXT
   .toggle-switch:has(> .switch-input:checked) ~ .header-container .hello-world-text {
     visibility: visible;
     opacity: 1;
-    transition: 1s;
     transition-delay: 0.5s;
   }
 
@@ -199,7 +226,6 @@ START MY NAME, POSITION AND PHOTO
   .toggle-switch:has(> .switch-input:checked) ~ .header-container .my-name-text {
     visibility: visible;
     transform: translateX(0px);
-    transition: 0.3s;
     transition-delay: 0.5s;
   }
 
@@ -217,7 +243,6 @@ START MY NAME, POSITION AND PHOTO
   .toggle-switch:has(> .switch-input:checked) ~ .header-container .current-position {
     visibility: visible;
     transform: translateY(475px);
-    transition: 0.3s;
     transition-delay: 0.5s;
   }
 
@@ -233,7 +258,6 @@ START MY NAME, POSITION AND PHOTO
   .toggle-switch:has(> .switch-input:checked) ~ .header-container .me-photo {
     visibility: visible;
     transform: translateY(925px);
-    transition: 0.3s;
     transition-delay: 0.5s;
   }
 
@@ -247,12 +271,12 @@ START NAV BAR
   .nav-bar {
     position: sticky;
     display: flex;
-    top: 0;
     z-index: 10;
     width: 100vw;
     column-gap: 0px;
+    min-height: 0px;
     height: 0px;
-    margin-top: 140px;
+    bottom: 0;
     margin-left: -1900px;
     visibility: hidden;
     background-color: var(--light);
@@ -261,9 +285,9 @@ START NAV BAR
 
   .toggle-switch:has(> .switch-input:checked) ~ .nav-bar {
     visibility: visible;
-    height: 150px;
+    min-height: 95px;
+    height: 12vh;
     transform: translateX(1890px);
-    transition: 0.3s;
     transition-delay: 0.5s;
     transition-property: transform, height;
   }
@@ -271,10 +295,11 @@ START NAV BAR
   .nav-bar .nav-bar-element {
     position: relative;
     display: flex;
-    justify-content: center; /* align horizontal */
+    justify-content: center;
     align-items: center; 
     width: 20vw;
-    height: 150px;
+    min-height: 95px;
+    height: 12vh;
     text-decoration: none;
     box-shadow: inset 0px 7px 3px -3px rgba(0,0,0,0.9);
   }
@@ -287,7 +312,6 @@ START ABOUT ME SECTION
 */
 
   .about-me-section {
-    position: relative;
     height: 0px;
     color: white;
     box-shadow: none;
@@ -297,8 +321,8 @@ START ABOUT ME SECTION
     box-shadow: 0px 7px 3px -3px rgba(0,0,0,0.9);
     margin-top: 10px;
     margin-left: -8px;
-    padding-bottom: 50px;
-    height: 500px;
+    padding: 250px 0px;
+    height: auto;
     transition-delay: 0.8s;
     transition-property: height, box-shadow, margin-top, margin-left, padding-bottom;
   }
@@ -309,15 +333,15 @@ START COFFEE CUP
 
 .about-me-section .coffee-container {
     position: relative;
+    display: inline-block;
     overflow: hidden;
     width: 500px;
-    height: -0px;
+    height: 0px;
   }
 
   .toggle-switch:has(> .switch-input:checked) ~ .about-me-section .coffee-container {
     height: 500px;
     padding-left: 150px;
-    margin-top: 100px;
     transition-delay: 0.8s;
     transition-property: height;
   }
@@ -521,19 +545,18 @@ START PERSONAL DESCRIPTION
 */
 
   .about-me-section .personal-description {
-    position: relative;
+    display: inline-block;
     font-size: 0px;
-    width: 50vw;
-    left: 700px;
-    top: -500px;
-    margin: auto;
+    width: 30vw;
+    vertical-align: top;
+    left: 100px;
   }
 
   .toggle-switch:has(> .switch-input:checked) ~ .about-me-section > .personal-description{
     font-size: 25px;
-    margin: 50px 50px 0px;
+    margin: 0px 50px 0px;
     transition-delay: 0.8s;
-    transition-property: font-size;
+    transition-property: font-size, margin;
   }
 
 /*
@@ -558,6 +581,7 @@ START SKILLS SECTION
     box-shadow: inset 0px 7px 3px -3px rgba(0,0,0,0.9);
     padding-left: 50px;
     padding-bottom: 50px;
+    padding-top: 50px;
     height: auto;
     width: 99vw;
     transition-delay: 0.8s;
@@ -576,10 +600,18 @@ START SKILLS SECTION
     min-height: 300px;
     width: 100px;
     overflow: hidden;
+    visibility: hidden;
     padding: 10px 50px 10px 300px;
     margin-top: 50px;
     border-radius: 100px;
-    transition: width 0.5s, background-color 0.5s, margin-left 0.5s;
+    transition: width 0.5s, background-color 0.5s, margin-left 0.5s, visibility 0s, padding 0s, margin-top 0s;
+    transition-delay: width 0s, background-color 0s, margin-left 0s, visibility 0.8s, padding 0.8s, margin-top 0.8s;
+  }
+
+  .toggle-switch:has(> .switch-input:checked) ~ .skills-section .skill-section-label {
+    visibility: visible;
+    padding: 10px 50px 10px 300px;
+    margin-top: 50px;
   }
 
   .skills-section .skill-section-label:hover {
